@@ -3,11 +3,166 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Flip Reviews of Top 8 Reads</title>
+    <style>
+        body {
+            font-family: Helvetica, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7afaf;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: f7afaf;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #20072e;
+            text-align: left;
+        }
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .book-card {
+            width: 100%;
+            height: 400px;
+            perspective: 1000px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .book-card.flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-back {
+            background-color: #530315;
+            color: rgb(221, 206, 75);
+            transform: rotateY(180deg);
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is my first web page!</p>
+    <div class="container">
+        <h1>Flip Reviews of Top 8 Reads</h1>
+        <div class="book-list">
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://images4.penguinrandomhouse.com/cover/9780593538241" alt="Land of Milk and Honey">
+                    </div>
+                    <div class="card-back">
+                        <p>An author swings for the fences with luscious, indulgent prose.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://www.harpercollins.com/cdn/shop/files/9780063286870.jpg?v=1719426605&width=350" alt="Rainbow Black">
+                    </div>
+                    <div class="card-back">
+                        <p>Propulsive writing, and at the edge between hilarious and terrifying</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://mpd-biblio-covers.imgix.net/9780374533403.jpg?w=1000" alt="The Spirit Catches You and You Fall Down">
+                    </div>
+                    <div class="card-back">
+                        <p>Eastern tradition and Western medicine clash in this true story.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://m.media-amazon.com/images/I/71JfQrv-LUL._SY522_.jpg" alt="The Sound of Things Falling">
+                    </div>
+                    <div class="card-back">
+                        <p>An elegiac, mysterious reflection on the Colombian drug crisis.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://images4.penguinrandomhouse.com/cover/9780593330227" alt="I Love You But I've Chosen Darkness">
+                    </div>
+                    <div class="card-back">
+                        <p>Autofiction takes a psychonautic turn as a wife and mother ventures into the desert.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://images1.penguinrandomhouse.com/cover/9780735213449" alt="Sudden Death">
+                    </div>
+                    <div class="card-back">
+                        <p>Empires and notables cross paths and enter a tennis death match in an vibrant imagined history.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://m.media-amazon.com/images/I/51rkdwO2HyL._SY445_SX342_.jpg" alt="The Mere Wife">
+                    </div>
+                    <div class="card-back">
+                        <p>A contemporary, timeless Beowulf you'll want to read quickly and then again slowly.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="book-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <img src="https://cdn.sanity.io/images/p34gzxcg/production/75b663c50339cb79d12e89c4d99e01d1e7760d17-1650x2550.jpg?auto=format&w=500&fit=scale" alt="The Obscene Bird of Night">
+                    </div>
+                    <div class="card-back">
+                        <p>Mind-bending and disturbing, it's magic realism like you've never seen before.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.book-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+    </script>
 </body>
-<html>
+</html>
